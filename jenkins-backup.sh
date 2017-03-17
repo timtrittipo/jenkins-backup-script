@@ -2,11 +2,11 @@
 
 ##################################################################################
 function usage(){
-  echo "usage: $(basename $0) /path/to/jenkins_home archive.tar.gz"
+  echo "usage: $(basename $0) /path/to/jenkins_home "
 }
 ##################################################################################
 
-readonly JENKINS_HOME=$1
+JENKINS_HOME=${JENKINS_HOME:-/var/lib/jenkins}
 readonly DEST_FILE=$2
 readonly CUR_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 readonly TMP_DIR="$CUR_DIR/tmp"
@@ -14,7 +14,7 @@ readonly ARC_NAME="jenkins-backup"
 readonly ARC_DIR="$TMP_DIR/$ARC_NAME"
 readonly TMP_TAR_NAME="$TMP_DIR/archive.tar.gz"
 
-if [ -z "$JENKINS_HOME" -o -z "$DEST_FILE" ] ; then
+if [ -z "$JENKINS_HOME" ] ; then
   usage >&2
   exit 1
 fi
@@ -70,10 +70,10 @@ if [ "$(ls -A $JENKINS_HOME/jobs/)" ] ; then
   backup_jobs $JENKINS_HOME/jobs/
 fi
 
-cd "$TMP_DIR"
-tar -czvf "$TMP_TAR_NAME" "$ARC_NAME/"*
-cd -
-mv -f "$TMP_TAR_NAME" "$DEST_FILE"
-rm -rf "$ARC_DIR"
+#cd "$TMP_DIR"
+#tar -czvf "$TMP_TAR_NAME" "$ARC_NAME/"*
+#cd -
+#mv -f "$TMP_TAR_NAME" "$DEST_FILE"
+#rm -rf "$ARC_DIR"
 
 exit 0
