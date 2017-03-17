@@ -8,7 +8,7 @@ function usage(){
 
 JENKINS_HOME=${JENKINS_HOME:-/var/lib/jenkins}
 readonly DEST_FILE=$2
-readonly CUR_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
+readonly CUR_DIR=$(cd "$(dirname ${BASH_SOURCE:-$0})"; pwd)
 readonly TMP_DIR="$CUR_DIR/tmp"
 readonly ARC_NAME="jenkins-backup"
 readonly ARC_DIR="$TMP_DIR/$ARC_NAME"
@@ -27,9 +27,9 @@ done
 cp "$JENKINS_HOME/"*.xml "$ARC_DIR"
 
 cp "$JENKINS_HOME/plugins/"*.[hj]pi "$ARC_DIR/plugins"
-hpi_pinned_count=$(find $JENKINS_HOME/plugins/ -name *.hpi.pinned | wc -l)
-jpi_pinned_count=$(find $JENKINS_HOME/plugins/ -name *.jpi.pinned | wc -l)
-if [ $hpi_pinned_count -ne 0 -o $jpi_pinned_count -ne 0 ]; then
+hpi_pinned_count=$(find $JENKINS_HOME/plugins/ -name "*.hpi.pinned" | wc -l)
+jpi_pinned_count=$(find $JENKINS_HOME/plugins/ -name "*.jpi.pinned" | wc -l)
+if [ $hpi_pinned_count -ne 0 ] ||  [ $jpi_pinned_count -ne 0 ]; then
   cp "$JENKINS_HOME/plugins/"*.[hj]pi.pinned "$ARC_DIR/plugins"
 fi
 
@@ -60,7 +60,7 @@ function backup_jobs {
     else
       true
       #echo "Job! $JENKINS_HOME/jobs/$rel_depth/$job_name"
-    fi 
+    fi
   done
   #echo "Done in $(pwd)"
   cd -
