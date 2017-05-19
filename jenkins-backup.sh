@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 
-PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Windows/system32:/cygdrive/c/Windows:/cygdrive/c/Windows/System32/Wbem:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0:/cygdrive/c/Program Files/Amazon/cfn-bootstrap:/cygdrive/c/bin/Git/cmd:/cygdrive/c/bin/AWSCLI
+PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Windows/system32:/cygdrive/c/Windows:/cygdrive/c/Windows/System32/Wbem:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0:/cygdrive/c/bin/Git/cmd:/cygdrive/c/bin/AWSCLI
 export PATH
 
 
