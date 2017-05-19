@@ -1,5 +1,9 @@
 #!/bin/bash -xe
 
+PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Windows/system32:/cygdrive/c/Windows:/cygdrive/c/Windows/System32/Wbem:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0:/cygdrive/c/Program Files/Amazon/cfn-bootstrap:/cygdrive/c/bin/Git/cmd:/cygdrive/c/bin/AWSCLI
+export PATH
+
+
 ##################################################################################
 function usage(){
   echo "usage: $(basename $0) /path/to/jenkins_home "
@@ -13,6 +17,7 @@ readonly TMP_DIR="$CUR_DIR/tmp"
 readonly ARC_NAME="jenkins-backup"
 readonly ARC_DIR="$TMP_DIR/$ARC_NAME"
 readonly TMP_TAR_NAME="$TMP_DIR/archive.tar.gz"
+
 
 if [ -z "$JENKINS_HOME" ] ; then
   usage >&2
